@@ -1,13 +1,12 @@
 name: Playwright QA - 22f3002449@ds.study.iitm.ac.in
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
   run-playwright:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -19,6 +18,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: Run Playwright Script
         run: node scraper.js
